@@ -1,0 +1,264 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+ul li {
+    list-style-type: none;
+}
+
+
+#modal-start {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#modal-end, #modal-win {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.block {
+    width: 350px;
+    height: 350px;
+    background: #fff;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    z-index: 10001;
+    padding: 20px;
+}
+
+.modal-end-block, .modal-win-block {
+    width: 350px;
+    height: 350px;
+    background: #fff;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    z-index: 10001;
+    padding: 20px;
+}
+
+.btn-end {
+    order: 1;
+}
+
+.block-item {
+    display: grid;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn {
+    padding: 10px 75px;
+    background: rgb(145, 14, 14);
+    outline: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    transition: all .5s ease;
+    font-weight: 700;
+}
+
+.btn:hover {
+    background: #000;
+    transition: all .5s ease;
+}
+
+.btn-start, .btn-win {
+    background: rgb(9, 226, 45);
+    color: #fff;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 10px 0;
+    transition: all .5s ease;
+    font-weight: 700;
+}
+
+.btn-win {
+    order: 1;
+}
+
+.btn-start:hover, .btn-win:hover {
+    background:rgb(14, 173, 40);
+    transition: all .5s ease;
+}
+
+.btn-end {
+    background: rgb(158, 35, 26);
+    color: #fff;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 10px 0;
+    transition: all .5s ease;
+    font-weight: 700;
+}
+
+.btn-end:hover {
+    background: rgb(128, 38, 31);
+    transition: all .5s ease;
+}
+
+
+#party-game {
+    width: 800px;
+    border: 1px solid #000;
+    border-radius: 13px;
+    position: relative;
+}
+
+.modal-title {
+    text-align: center;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.title {
+    order: -1;
+    text-align: center;
+    
+}
+
+.list {
+    display: flex;
+    gap: 40px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 20px;
+}
+
+.list-item {
+    width: 125px;
+    height: 125px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    justify-content: center;
+    list-style-type: none;
+    position: relative;
+}
+
+.score {
+    width: 75px;
+    height: 25px;
+    background: rgb(150, 61, 61);
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 20px;
+    top: -15px;
+    left: -1px;
+    border-top: 1px solid;
+    border-left: 1px solid;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+    
+}
+
+.timer {
+    position: absolute;
+    top: 100px;
+    transition: all .5s ease;
+    left: 25px;
+}
+
+.time {
+    position: absolute;
+    left: 50px;
+    background-color: rgb(20, 172, 20);
+    padding: 3px;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    transition: all .5s ease;
+}
+
+.bx-timer {
+    font-size: 50px;
+    position: absolute;
+    color: rgb(20, 172, 20);
+    transition: all .5s ease;
+    
+}
+
+.button {
+    width: 100%;
+    height: 100%;
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    font-size: 20px;
+    border-radius: 14px;
+}
+
+.list-item::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: #000;
+    border-radius: 14px;
+}
+
+.list-item.open {
+    animation: .5s .1s ease anim;
+}
+
+.open {
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.6;
+}
+
+.match {
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.6;
+}
+
+.list-item.open::before {
+    background: transparent;
+}
+
+@keyframes anim {
+    form {
+        transform: rotateX(90deg);
+    }
+
+    to {
+        transform: rotateX(1800deg);
+    }
+}
