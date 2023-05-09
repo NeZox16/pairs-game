@@ -4,6 +4,9 @@
     let ul = document.createElement('ul');
     const modalStart = document.getElementById('modal-start');
 
+    let time = document.querySelector('.time');
+    let iconTImer = document.querySelector('.bx-timer');
+
     let pairsList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     let doublePairsList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
@@ -118,15 +121,16 @@
         if (flipCards.length === 2) {
             checkFlipCard();
         }
-    }
+    }   
 
+    
     function playTimer() {
-        let time = document.querySelector('.time');
-        let iconTImer = document.querySelector('.bx-timer');
         time.innerHTML = 60;
         let startTimer = setInterval(() => {
-            time.innerHTML = --time.innerHTML; 
-            if(time.innerHTML == 45) {
+            time.innerHTML = --time.innerHTML;
+            if (score === 6) {
+                clearInterval(startTimer)
+            } else if(time.innerHTML == 45) {
                 time.style.backgroundColor = 'rgb(200, 255, 127)';
                 iconTImer.style.color = 'rgb(200, 255, 127)';
             } else if (time.innerHTML == 30) {
@@ -143,9 +147,12 @@
                 iconTImer.style.color = 'rgb(122, 20, 20)';
                 clearInterval(startTimer);
                 modalEnd();
+            } else if (time.innerHTML == 100) {
+                time.innerHTML = 0;
+                clearInterval(startTimer);
             }
         }, 1000);
-    }
+    };
 
 
     let score = 0;
@@ -182,14 +189,14 @@
         modalEnd.style.display = 'flex';
 
         let modalTitleEnd = document.createElement('h2');
-        modalTitleEnd.classList.add('modal-title-end')
-        modalTitleEnd.textContent = 'You have lost'
+        modalTitleEnd.classList.add('modal-title-end');
+        modalTitleEnd.textContent = 'You have lost';
 
         let modalEndBlock = document.createElement('div');
         modalEndBlock.classList.add('modal-end-block');
 
         let btnEndGame = document.createElement('button');
-        btnEndGame.classList.add('btn-end')
+        btnEndGame.classList.add('btn-end');
         btnEndGame.textContent = 'Restart game';
 
         btnEndGame.addEventListener('click', () => {
@@ -205,6 +212,7 @@
 
     function checkToWin() {
         if(matchedCards.length === ul.children.length) {
+            time.innerHTML = 101;
             let modalWin = document.getElementById('modal-win');
             modalWin.style.display = 'flex';
     
@@ -283,9 +291,9 @@
 
         let pairsTitle = createPairsTitle(title);
         let listItem = createPairsListItem();
-        createPairsList();
+        let list = createPairsList();
         document.body.append(pairsTitle);
-        game.append(listItem);
+        game.append(list);
     };
 
     window.pairsApp = pairsApp;
